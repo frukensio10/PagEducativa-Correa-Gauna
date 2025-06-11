@@ -1,0 +1,7 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .bg-gradient-to-r.from-blue-400.to-teal-300 {
+    background: linear-gradient(90deg, #3b82f6, #14b8a6);
+  }

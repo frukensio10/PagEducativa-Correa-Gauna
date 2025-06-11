@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Robótica EduTec</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"  rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-b from-gray-900 to-gray-800 text-white">
+
+  <!-- Header -->
+  <header class="bg-gray-900 shadow-lg sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-teal-300">
+        Robótica EduTec
+      </h1>
+      <nav class="hidden md:flex space-x-6">
+        <button onclick="goToPage('home')" class="hover:text-blue-400 transition">Inicio</button>
+        <button onclick="goToPage('arduino')" class="hover:text-blue-400 transition">Arduino</button>
+        <button onclick="goToPage('tinkercad')" class="hover:text-teal-400 transition">Tinkercad</button>
+        <button onclick="goToPage('nosotros')" class="hover:text-purple-400 transition">Sobre Nosotros</button>
+      </nav>
+      <button id="menu-toggle" class="md:hidden text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-800 p-4"></div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="app" class="container mx-auto px-4 py-10"></main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 py-8 px-4 text-center text-gray-400">
+    <p>&copy; 2025 Robótica EduTec. Todos los derechos reservados.</p>
+    <p class="mt-2 text-sm">Diseñado para fomentar el aprendizaje práctico en estudiantes de 13 a 17 años.</p>
+  </footer>
+
+  <!-- Templates -->
+  <template id="inicio-template">
+    <section class="py-16 text-center">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
+        Aprendizaje Práctico con <span class="text-blue-400">Arduino</span> y <span class="text-teal-400">Tinkercad</span>
+      </h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Actividades diseñadas para docentes y estudiantes entre 13 y 17 años. Fomentamos habilidades STEM a través de proyectos interactivos.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4 mt-6">
+        <button onclick="goToPage('arduino')" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-semibold transition">
+          Proyectos con Arduino
+        </button>
+        <button onclick="goToPage('tinkercad')" class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-full font-semibold transition">
+          Actividades en Tinkercad
+        </button>
+      </div>
+    </section>
+  </template>
+
+  <template id="actividades-template">
+    <div class="relative max-w-md mx-auto mb-10">
+      <input type="text" id="search-input" placeholder="Buscar actividad..." class="w-full px-4 py-3 rounded-full bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+      <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </button>
+    </div>
+    <h3 class="text-2xl font-semibold mb-6 text-center capitalize"></h3>
+    <div id="activities-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+  </template>
+
+  <template id="sobre-nosotros-template">
+    <section class="max-w-4xl mx-auto py-10 px-6 bg-gray-800 rounded-xl shadow-lg">
+      <h2 class="text-3xl font-bold text-center mb-6">Sobre Nosotros</h2>
+      <p class="text-gray-300 text-lg mb-6">
+        Somos el <strong>Profesor Eduardo Daniel Correa</strong> y el <strong>Profesor Juan Manuel Gauna</strong>, docentes de la ciudad de <strong>Corrientes Capital, Argentina</strong>.
+      </p>
+      <p class="text-gray-300 text-lg mb-6">
+        Creamos este proyecto porque vimos la dificultad que muchos docentes, especialmente aquellos sin formación técnica o informática, tienen para captar la atención de sus alumnos.
+        Por eso, decidimos vincular las herramientas de robótica educativa como <strong>Arduino</strong> y <strong>Tinkercad</strong> con las distintas áreas curriculares.
+      </p>
+      <p class="text-gray-300 text-lg mb-6">
+        El objetivo es simple: lograr que cualquier docente pueda usar estas herramientas para generar experiencias de aprendizaje innovadoras, visuales y prácticas con sus alumnos.
+      </p>
+      <p class="text-gray-300 text-lg">
+        Si deseas contactarnos, escríbenos por WhatsApp al número:
+      </p>
+      <div class="text-center mt-6">
+        <a href="https://wa.me/543795340488"  target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-full font-medium transition">
+          <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19.05 4.93A12.93 12.93 0 0 0 4.93 19.05c.3.7.7 1.36 1.16 1.97l1.48-1.48c.07-.07.14-.14.2-.21a10 10 0 1 1 15.4-15.4c-.07.07-.14.15-.21.21l-1.48 1.48c.61-.47 1.27-.87 1.97-1.16zM13.06 19.56a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm-6.12-2.03a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm11.17-1.38a9.96 9.96 0 0 0 1.28-5.15 9.96 9.96 0 1 0-9.96 9.96 9.96 9.96 0 0 0 5.15 1.28h.05a.99.99 0 0 0 .25-.04l3.78-1.02 1.02 3.78a.99.99 0 0 0 .04.25h.02a.98.98 0 0 0 1.7-1l-4.22-15.5A9.96 9.96 0 0 0 19.05 4.93z"/>
+          </svg>
+          +54 379 5340488
+        </a>
+      </div>
+    </section>
+  </template>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
